@@ -1,12 +1,10 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Layout from './components/Layout';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <Header/>
-      <Footer/>
+      <Layout/>
     </div>
   );
 }
