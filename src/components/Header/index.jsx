@@ -1,7 +1,7 @@
 import React from "react";
 import CartIcon from "../../assets/cart_icon.png";
 import SearcIcon from "../../assets/search_icon.png"
-import * as S from "./Header.styles"
+import * as S from "./header.styles"
 
 export default function Header(){
     return (
