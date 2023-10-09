@@ -6,10 +6,10 @@ export default function Nav() {
       <nav>
         <S.NavUl>
           <S.NavLi>
-            <S.StyledLink to="/" activeClassName="active"  >Home</S.StyledLink>
+            <S.StyledLink to="/" >Home</S.StyledLink>
           </S.NavLi>
           <S.NavLi>
-            <S.StyledLink to="/contact" activeClassName="active" >Contact</S.StyledLink>
+            <S.StyledLink to="/contact" >Contact</S.StyledLink>
           </S.NavLi>
         </S.NavUl>
       </nav>

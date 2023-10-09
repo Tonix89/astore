@@ -1,11 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect } from "react";
+import Product from "../components/ProductCard";
+import * as S from "./home.styles";
+
+const url = "https://api.noroff.dev/api/v1/online-shop";
 
 function Home() {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch(url).then((res) => res.json()).then(json => {
+            setProducts(json)
+        })
+    }, [])
+
+    console.log(products);
     return (
-        <Link to="/product">
-            <button>View Product</button>
-        </Link>
+        <div>
+            <div>
+                <S.ProductUl>
+                    {products.map(item => <Product key={item.id} item={item} />)}
+                </S.ProductUl>
+            </div>
+        </div>
+
     )
 }
 

@@ -8,7 +8,7 @@ export const SearchImg = styled.img`
     cursor : pointer;
 
     @media (max-width : 500px) {
-        top : 1px;
+        width : 16px;
     }
 `;
 export const SearchCont = styled.div`
