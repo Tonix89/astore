@@ -2,7 +2,6 @@ import React from "react";
 import * as S from "./discountPrice.styles";
 
 export default function Discount({item}) {
-    console.log(item);
 
     const TotalDiscount = parseFloat(item.price) - parseFloat(item.discountedPrice);
 

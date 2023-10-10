@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const ProductCont = styled.li`
     display : flex;
@@ -55,4 +54,5 @@ export const ProductLink = styled.button`
     font-size : 18px;
     font-weight : bold;
     margin-bottom : 10px;
+    cursor : pointer;
 `;
