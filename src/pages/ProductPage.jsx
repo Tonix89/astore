@@ -5,6 +5,7 @@ import Discount from "../tools/Discount";
 import Price from "../tools/Price";
 import Review from "../components/Review";
 import RatingStar from "../components/Ratings";
+import useCartCounter from "../tools/Counter";
 import * as S from "./product.styles";
 
 function SingleProduct() {
@@ -12,6 +13,9 @@ function SingleProduct() {
     let params = useParams();
 
     const data = useProductStore((state) => state.data);
+
+    const items = useCartCounter((state) => state.items);
+    const addProduct = useCartCounter((state) => state.addProduct);
 
     const [showImage, setShowImage] = useState(false);
     const [product, setProduct] = useState({});
@@ -36,7 +40,20 @@ function SingleProduct() {
         const filterProduct = data.filter((item) => item.id === params.id);
         setProduct(filterProduct[0]);
         setReviews(filterProduct[0].reviews);
-    }, [data])
+    }, [data, params]);
+
+    const isAdded = items.find((item) => {
+        if(item.id === product.id){
+            return true;
+        }
+    });
+
+    if(isAdded){
+        const button = document.getElementById("add-button");
+        button.disabled= true;
+        button.style.cursor = "none";
+        button.innerHTML = "In Cart Already";
+    }
 
     return (
         <S.ProductCont>
@@ -54,7 +71,7 @@ function SingleProduct() {
             )}
             <S.TitleCont>
                 <S.ProductTitle>{product.title}</S.ProductTitle>
-                <S.AddButton>Add To Cart</S.AddButton>
+                <S.AddButton id="add-button" onClick={() => addProduct(product)}>Add To Cart</S.AddButton>
             </S.TitleCont>
             <S.ProductDesc>{product.description}</S.ProductDesc>
             <S.RatingCont>
