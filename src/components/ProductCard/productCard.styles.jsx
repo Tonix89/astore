@@ -37,6 +37,17 @@ export const ProductImage = styled.img`
     object-fit : cover;
 `;
 
+export const PriceCont = styled.div`
+    position : absolute;
+    top : 78%;
+    align-self : flex-start;
+    margin : 10px 5px;
+    background-color : white;
+    padding : 2px 10px;
+    border-radius : 10px;
+    color : ${(props) => props.theme.color.primary};
+`;
+
 export const Title = styled.h2`
     display : flex;
     flex-direction : column ;

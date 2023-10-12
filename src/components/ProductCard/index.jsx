@@ -11,7 +11,9 @@ export default function Product({ item }) {
         <S.ImageCont>
             <S.ProductImage src={`${item.imageUrl}`}></S.ProductImage>
             <Discount item={item}/>
-            <Price item={item}/>
+            <S.PriceCont>
+                <Price item={item}/>
+            </S.PriceCont>
         </S.ImageCont>
         <S.Title>{item.title}</S.Title>
         <Link to={`/product/${item.id}`}>

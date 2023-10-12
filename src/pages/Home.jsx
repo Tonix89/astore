@@ -6,11 +6,15 @@ import * as S from "./home.styles";
 
 function Home() {
 
-    const { data , error, fetchData } = useProductStore();
+    const data = useProductStore((state) => state.data);
+    let error = useProductStore((state) => state.error);
+    const fetchData = useProductStore((state) => state.fetchData);
+    const updateErrorMessage = useProductStore((state) => state.updateErrorMessage);
 
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+        updateErrorMessage(null);
+    }, [fetchData])
 
     if (error) {
         return <S.ErrorMessage>Error: {error}</S.ErrorMessage>;
