@@ -5,11 +5,18 @@ const useCartCounter = create (
     persist((set,get) => ({
             items : [],
             count : 0,
-            addProduct : (product) => {
-                set((state) => ({count : state.count + 1}));
-                set((state) => ({items : [...state.items, product]}));
+            total : 0,
+            addProduct : (item) => {
+                set(() => ({count : item.cart.length}));
+                set(() => ({items : [...item.cart]}));
+                set(() => ({total : [item.total]}));
                 set({ items : get().items})
-            },  
+            },
+            editItems : (item) => {
+                set((state) => ({count : state.count - 1}));
+                set(() => ({items : [...item]}));
+                set({item : get().items})
+            }
         }),
         {
             name : "cart",

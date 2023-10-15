@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from "react";
+import React , { useEffect, useState, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import useProductStore from "../api/GetProduct";
 import Discount from "../tools/Discount";
@@ -6,22 +6,33 @@ import Price from "../tools/Price";
 import Review from "../components/Review";
 import RatingStar from "../components/Ratings";
 import useCartCounter from "../tools/Counter";
+import { reducer} from "../tools/Checkout";
 import * as S from "./product.styles";
 
 function SingleProduct() {
+
+    let initialState = { cart: [], total: 0 };
     
     let params = useParams();
 
     const data = useProductStore((state) => state.data);
 
     const items = useCartCounter((state) => state.items);
+    const total = useCartCounter((state) => state.total);
+
+    if(items.length !== 0){
+        initialState = { cart: items, total: total };
+    }
+
     const addProduct = useCartCounter((state) => state.addProduct);
 
     const [showImage, setShowImage] = useState(false);
     const [product, setProduct] = useState({});
     const [reviews, setReviews] = useState([]);
+    const [isAdded, setIsAdded] = useState();
 
     useEffect(() => {
+
         const handleDomClick = (e) => {
           if(e.target.id === "item-image") {
             return;
@@ -33,20 +44,24 @@ function SingleProduct() {
     
         return () => {
           document.removeEventListener("click", handleDomClick);
-        }
+        };
       }, [])
 
     useEffect (() => {
         const filterProduct = data.filter((item) => item.id === params.id);
         setProduct(filterProduct[0]);
         setReviews(filterProduct[0].reviews);
-    }, [data, params]);
 
-    const isAdded = items.find((item) => {
-        if(item.id === product.id){
-            return true;
-        }
-    });
+        const findItem =items.find((item) => {
+            if(item.id === filterProduct[0].id){
+                return true
+            }
+        });
+
+        if(findItem){
+            setIsAdded(true);
+        };
+    }, [params, items]);
 
     if(isAdded){
         const button = document.getElementById("add-button");
@@ -54,6 +69,12 @@ function SingleProduct() {
         button.style.cursor = "none";
         button.innerHTML = "In Cart Already";
     }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+        addProduct(state);
+    }, [state.cart])
 
     return (
         <S.ProductCont>
@@ -71,7 +92,7 @@ function SingleProduct() {
             )}
             <S.TitleCont>
                 <S.ProductTitle>{product.title}</S.ProductTitle>
-                <S.AddButton id="add-button" onClick={() => addProduct(product)}>Add To Cart</S.AddButton>
+                <S.AddButton id="add-button" onClick={() => dispatch({ type: 'addProduct', payload: product })}>Add To Cart</S.AddButton>
             </S.TitleCont>
             <S.ProductDesc>{product.description}</S.ProductDesc>
             <S.RatingCont>
