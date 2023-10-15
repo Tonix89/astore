@@ -16,6 +16,10 @@ const useCartCounter = create (
                 set((state) => ({count : state.count - 1}));
                 set(() => ({items : [...item]}));
                 set({item : get().items})
+            },
+            clearItems : () => {
+                set(() => ({items : []}));
+                set({ items : get().items});
             }
         }),
         {
