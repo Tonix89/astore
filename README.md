@@ -13,8 +13,8 @@ Astore is an online store website. This project is built using React frameworks.
   - It has a look-ahead search function and clickable search results.
 
 ## Built with
-  - [Noroff API](https://docs.noroff.dev/auctionhouse-endpoints/authentication)
-  - [Create React App](https://github.com/facebook/create-react-app).
+  - [Noroff API](https://api.noroff.dev/api/v1/online-shop)
+  - [Create React App](https://react.dev/)
 
 ## Getting started
 
