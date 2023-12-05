@@ -1,6 +1,58 @@
-# Getting Started with Create React App
+# ASTORE
+![image](https://github.com/Tonix89/astore/assets/100238552/8a380cde-5989-4f97-82d9-33aa83912a1f)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Astore is an online store website. This project is built using React frameworks. The products in this project are fetched by an API link provided by Noroff.
+
+### What it does
+  - It fetches products using API calls.
+  - It can view a single product, displaying all its information.
+  - It can add a product to a cart component and display how many products are added to the cart.
+  - It can remove the product that is being added to the cart.
+  - It can calculate the total price of the product over quantity and the overall total price of the products being added to the cart.
+  - It has a look-ahead search function and clickable search results.
+
+## Built with
+  - [Noroff API](https://docs.noroff.dev/auctionhouse-endpoints/authentication)
+  - [Create React App](https://github.com/facebook/create-react-app).
+
+## Getting started
+
+ ### Installing
+   1. Clone this repo:
+      ```bash
+      https://github.com/Tonix89/astore.git
+      ```
+   2. Install all dependencies:
+      ```bash
+      npm i
+      ```
+      
+ ### Running
+  1. Run this command to start the development server:
+  
+     ```bash
+     npm run start
+     ```
+Once the command is run, the development server is automatically open in the code editor's default browser.
+See [Other available scripts](#available-scripts) for react development.
+
+## Contributing
+If you wish to contribute to this project, please follow this guidelines:
+  1. Fork the project.
+  2. Create a development branch from ``` master ``` .
+  3. Make some commits to improve the project.
+  4. Make sure to add a commit message in each commit and describe what you did.
+  5. Push the development branch to your ``` master ``` branch.
+  6. Open a Pull Request to the upstream branch.
+  7. Pull Request will be reviewed and merged if applicable.
+
+## Contact
+If you have any question or suggestion, please do not hesitate to contact me here:
+
+[LinkedIn](www.linkedin.com/in/antonio-arabejo-a22524152)
+
+[Facebook](https://www.facebook.com/tonixzz/)
 
 ## Available Scripts
 
